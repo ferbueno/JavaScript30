@@ -7,6 +7,16 @@
 </head>
 <body>
 <script>
+  let pressedArray = []
+  const secretCode = 'ferbueno'
+  window.addEventListener('keyup', (e) => {
+    pressedArray.push(e.key)
+    pressedArray.splice(- secretCode.length - 1, pressedArray.length - secretCode.length)
+    if (pressedArray.join('').includes(secretCode)) {
+      console.log("DING DING")
+      cornify_add()
+    }
+  })
 </script>
 </body>
 </html>
