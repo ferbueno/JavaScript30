@@ -44,8 +44,39 @@
   <ul id="bands"></ul>
 
 <script>
+
+// MY SOLUTION
+/*const bandsList = document.querySelector('#bands')
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+const articles = ['The', 'A', 'An']
+
+bands.sort( (band1, band2) => {
+  const band1WordIndex = articles.includes(band1.split(" ")[0]) ? 1 : 0
+  const band2WordIndex = articles.includes(band2.split(" ")[0]) ? 1 : 0
+  return band1.split(" ")[band1WordIndex] > band2.split(" ")[band2WordIndex] ?  1 : -1
+})
+
+let htmlContent = ''
+bands.forEach( band => {
+  htmlContent += `<li>
+  ${band}
+  </li>`
+})
+
+bandsList.innerHTML = htmlContent*/
+
+//WES's SOLUTION
+
+const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+function strip(bandName) {
+  return bandName.replace(/^(a |the |an )/i, '').trim();
+}
+
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
+document.querySelector('#bands').innerHTML = sortedBands.map( band => `<li>${band}</li>`).join('')
 
 </script>
 
